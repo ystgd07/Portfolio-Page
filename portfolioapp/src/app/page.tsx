@@ -124,9 +124,12 @@ export default function Home() {
                 </Button>
                 <TooltipProvider>
                   <Tooltip>
-                    <TooltipTrigger>
+                    <TooltipTrigger asChild>
                       <Link href='https://github.com/ystgd07' target='_blank'>
-                        <Button variant='outline'>
+                        <Button
+                          variant='outline'
+                          className='flex items-center gap-1.5'
+                        >
                           <FaGithub className='h-5 w-5' /> GitHub
                         </Button>
                       </Link>
@@ -136,8 +139,12 @@ export default function Home() {
                 </TooltipProvider>
                 <TooltipProvider>
                   <Tooltip>
-                    <TooltipTrigger>
-                      <Button variant='outline' onClick={copyEmail}>
+                    <TooltipTrigger asChild>
+                      <Button
+                        variant='outline'
+                        onClick={copyEmail}
+                        className='flex items-center gap-1.5'
+                      >
                         <SiGmail className='h-5 w-5' /> Gmail:
                         ysotgood@gmail.com
                       </Button>

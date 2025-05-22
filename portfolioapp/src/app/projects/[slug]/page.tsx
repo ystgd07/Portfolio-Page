@@ -1,3 +1,5 @@
+"use client";
+
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,14 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft, Github, ExternalLink } from "lucide-react";
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}
-
-export default function ProjectPage({ params, searchParams }: PageProps) {
+export default async function ProjectPage({ params }: any) {
   const project = getProjectBySlug(params.slug);
 
   if (!project) {
