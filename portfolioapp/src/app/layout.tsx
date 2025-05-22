@@ -7,8 +7,11 @@ import BackToTopButton from "@/components/BackToTopButton";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Your Portfolio",
-  description: "Personal portfolio website showcasing my work and skills",
+  title: "25's 성수 포트폴리오",
+  description: "25's 성수 포트폴리오",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({

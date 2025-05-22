@@ -73,7 +73,7 @@ export default function Home() {
               alt='logo'
               className='rounded-full'
               width={32}
-              height={32} 
+              height={32}
             />
             <Link href='/' className='font-bold text-xl'>
               포트폴리오
@@ -113,8 +113,10 @@ export default function Home() {
                 양성수 입니다.
               </h1>
               <p className='text-xl text-muted-foreground'>
-              새로운 기술을 학습하여, 다양한 문제를 해결하는 것을 좋아합니다. <br />
-              최적의 프론트 서비스를 만들어내는 것을 목표로 나아가는 개발자 입니다.
+                새로운 기술을 학습하여, 다양한 문제를 해결하는 것을 좋아합니다.{" "}
+                <br />
+                최적의 프론트 서비스를 만들어내는 것을 목표로 나아가는 개발자
+                입니다.
               </p>
               <div className='flex gap-4'>
                 <Button asChild>
@@ -123,27 +125,24 @@ export default function Home() {
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger>
-                      <Link href="https://github.com/ystgd07" target="_blank">
-                        <Button variant="outline">
+                      <Link href='https://github.com/ystgd07' target='_blank'>
+                        <Button variant='outline'>
                           <FaGithub className='h-5 w-5' /> GitHub
                         </Button>
                       </Link>
                     </TooltipTrigger>
-                    <TooltipContent>
-                      GitHub 프로필 바로가기
-                    </TooltipContent>
+                    <TooltipContent>GitHub 프로필 바로가기</TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger>
-                      <Button variant="outline" onClick={copyEmail}>
-                        <SiGmail className='h-5 w-5' /> Gmail: ysotgood@gmail.com
+                      <Button variant='outline' onClick={copyEmail}>
+                        <SiGmail className='h-5 w-5' /> Gmail:
+                        ysotgood@gmail.com
                       </Button>
                     </TooltipTrigger>
-                    <TooltipContent>
-                      이메일 주소 복사
-                    </TooltipContent>
+                    <TooltipContent>이메일 주소 복사</TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
               </div>
@@ -166,33 +165,34 @@ export default function Home() {
         <section id='about' className='py-20 bg-muted/50'>
           <div className='container'>
             <div className='text-center max-w-3xl mx-auto mb-16'>
-              <h2 className="text-3xl font-bold mb-4">소개</h2>
-
+              <h2 className='text-3xl font-bold mb-4'>소개</h2>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-              <Card className="p-6">
-                <CardContent className="p-0 flex flex-col items-center text-center space-y-4">
-                  <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Code className="h-8 w-8 text-primary" />
+            <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16'>
+              <Card className='p-6'>
+                <CardContent className='p-0 flex flex-col items-center text-center space-y-4'>
+                  <div className='h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center'>
+                    <Code className='h-8 w-8 text-primary' />
                   </div>
-                  <h3 className="text-xl font-bold">프론트엔드</h3>
-                  <p className="text-muted-foreground">
-                    React, Next.js, TypeScript를 주로 사용하여 <br/>
-                    개발 경험을 쌓고 있습니다.<br/>
+                  <h3 className='text-xl font-bold'>프론트엔드</h3>
+                  <p className='text-muted-foreground'>
+                    React, Next.js, TypeScript를 주로 사용하여 <br />
+                    개발 경험을 쌓고 있습니다.
+                    <br />
                     (총 3개의 프로젝트를 수행)
                   </p>
                 </CardContent>
               </Card>
 
-              <Card className="p-6">
-                <CardContent className="p-0 flex flex-col items-center text-center space-y-4">
-                  <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Cloud className="h-8 w-8 text-primary" />
+              <Card className='p-6'>
+                <CardContent className='p-0 flex flex-col items-center text-center space-y-4'>
+                  <div className='h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center'>
+                    <Cloud className='h-8 w-8 text-primary' />
                   </div>
-                  <h3 className="text-xl font-bold">클라우드 엔지니어링</h3>
-                  <p className="text-muted-foreground">
-                    AWS 서비스를 사용하여 인프라 구축과 운영 경험을 쌓았습니다.<br/>
+                  <h3 className='text-xl font-bold'>클라우드 엔지니어링</h3>
+                  <p className='text-muted-foreground'>
+                    AWS 서비스를 사용하여 인프라 구축과 운영 경험을 쌓았습니다.
+                    <br />
                     (MSP 기업에서 1년간 근무)
                   </p>
                 </CardContent>
@@ -227,11 +227,16 @@ export default function Home() {
                   </div>
                 </div>
                 <CardContent className='p-6 flex flex-col flex-1'>
-                  <div className="flex gap-2 items-center mb-2">
+                  <div className='flex gap-2 items-center mb-2'>
                     <h3 className='text-xl font-bold'>{project.title}</h3>
-                    <Badge variant='outline' className='text-xs bg-primary text-white'>{project.role}</Badge>
+                    <Badge
+                      variant='outline'
+                      className='text-xs bg-primary text-white'
+                    >
+                      {project.role}
+                    </Badge>
                   </div>
-                  <div className="flex gap-2 items-center mb-4">
+                  <div className='flex gap-2 items-center mb-4'>
                     <Calendar className='h-4 w-4 text-muted-foreground' />
                     <p className='text-muted-foreground flex-1'>
                       {project.date}
@@ -242,13 +247,29 @@ export default function Home() {
                   </p>
                   <div className='flex flex-wrap gap-2 mb-4 '>
                     {project.tags.slice(0, 3).map((tag) => (
-                      <Badge key={tag} variant='secondary' className='text-xs flex items-center'>
-                        {tag === "React" && <FaReact className='mr-2 text-blue-500 w-4 h-4' />}
-                        {tag === "Next.js" && <SiNextdotjs className='mr-2 text-black w-4 h-4' />}
-                        {tag === "TypeScript" && <SiTypescript className='mr-2 text-sky-500 w-3 h-3' />}
-                        {tag === "Tailwind" && <SiTailwindcss className='mr-2 text-green-500 w-4 h-4' />}
-                        {tag === "React-Query" && <SiReactquery className='mr-2 text-red-500 w-4 h-4' />}
-                        {tag === "JavaScript" && <RiJavascriptFill className='mr-2 text-yellow-500 w-4 h-4' /> }
+                      <Badge
+                        key={tag}
+                        variant='secondary'
+                        className='text-xs flex items-center'
+                      >
+                        {tag === "React" && (
+                          <FaReact className='mr-2 text-blue-500 w-4 h-4' />
+                        )}
+                        {tag === "Next.js" && (
+                          <SiNextdotjs className='mr-2 text-black w-4 h-4' />
+                        )}
+                        {tag === "TypeScript" && (
+                          <SiTypescript className='mr-2 text-sky-500 w-3 h-3' />
+                        )}
+                        {tag === "Tailwind" && (
+                          <SiTailwindcss className='mr-2 text-green-500 w-4 h-4' />
+                        )}
+                        {tag === "React-Query" && (
+                          <SiReactquery className='mr-2 text-red-500 w-4 h-4' />
+                        )}
+                        {tag === "JavaScript" && (
+                          <RiJavascriptFill className='mr-2 text-yellow-500 w-4 h-4' />
+                        )}
                         <span>{tag}</span>
                       </Badge>
                     ))}
@@ -257,15 +278,12 @@ export default function Home() {
                         +{project.tags.length - 3} more
                       </Badge>
                     )}
-                    
                   </div>
                 </CardContent>
               </Card>
             ))}
           </div>
         </section>
-
-      
       </main>
 
       {/* Footer */}
@@ -273,7 +291,8 @@ export default function Home() {
         <div className='container flex flex-col md:flex-row items-center justify-between gap-4'>
           <div className='text-center md:text-left'>
             <p className='text-sm text-muted-foreground'>
-              © {new Date().getFullYear()} Your Name. All rights reserved.
+              © {new Date().getFullYear()} ysotgood@gmail.com All rights
+              reserved.
             </p>
           </div>
           <div className='flex gap-4'>
