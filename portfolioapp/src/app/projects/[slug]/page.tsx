@@ -1,4 +1,3 @@
-"use client";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -141,7 +140,9 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                   {project.screenshots.map((screenshot, index) => (
                     <Card key={index} className='h-full'>
                       <CardContent className='p-6'>
-                        <h3 className='text-xl font-bold mb-2'>{screenshot.caption}</h3>
+                        <h3 className='text-xl font-bold mb-2'>
+                          {screenshot.caption}
+                        </h3>
                         <div className='space-y-2'>
                           <h4 className='font-medium'>Implementations:</h4>
                           <div className='flex flex-wrap gap-2'>
@@ -161,10 +162,16 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                 </div>
               </TabsContent>
               {project.screenshots.map((screenshot, index) => (
-                <TabsContent key={index} value={`impl-${index}`} className='space-y-6'>
+                <TabsContent
+                  key={index}
+                  value={`impl-${index}`}
+                  className='space-y-6'
+                >
                   <Card key={index} className='h-full'>
                     <CardContent className='p-6'>
-                      <h3 className='text-xl font-bold mb-2'>{screenshot.caption}</h3>
+                      <h3 className='text-xl font-bold mb-2'>
+                        {screenshot.caption}
+                      </h3>
                       <ul className='list-disc list-inside text-sm'>
                         {screenshot.implementations.map((impl) => (
                           <li key={impl.title}>{impl.title}</li>
