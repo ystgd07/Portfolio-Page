@@ -3,14 +3,76 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { getProjectBySlug } from "@/lib/data";
+import { getProjectBySlug, projects, type Project } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft, Github, ExternalLink } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
-export default async function ProjectPage({ params }: any) {
-  const project = getProjectBySlug(params.slug);
+interface PageProps {
+  params: Promise<{
+    slug: string;
+  }>;
+}
+
+export default function ProjectPage({ params }: PageProps) {
+  const [project, setProject] = useState<Project | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [slug, setSlug] = useState<string>("");
+
+  useEffect(() => {
+    params.then((resolvedParams) => {
+      setSlug(resolvedParams.slug);
+      const fetchedProject = getProjectBySlug(resolvedParams.slug);
+      setProject(fetchedProject || null);
+      setIsLoading(false);
+    });
+  }, [params]);
+
+  if (isLoading) {
+    return (
+      <div className='flex flex-col min-h-screen'>
+        {/* Header */}
+        <header className='sticky top-0 z-10 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60'>
+          <div className='container flex h-16 items-center justify-between'>
+            <Skeleton className='h-7 w-24' />
+            <div className='hidden md:flex gap-6'>
+              <Skeleton className='h-5 w-12' />
+              <Skeleton className='h-5 w-16' />
+              <Skeleton className='h-5 w-12' />
+              <Skeleton className='h-5 w-16' />
+            </div>
+          </div>
+        </header>
+
+        <main className='flex-1'>
+          <section className='py-12 md:py-20 container'>
+            <div className='flex flex-col space-y-4'>
+              <Skeleton className='h-6 w-32' />
+              <div className='grid grid-cols-1 md:grid-cols-2 gap-8 items-start'>
+                <div>
+                  <Skeleton className='h-10 w-3/4 mb-4' />
+                  <div className='flex flex-wrap gap-2 mb-4'>
+                    <Skeleton className='h-6 w-16' />
+                    <Skeleton className='h-6 w-20' />
+                    <Skeleton className='h-6 w-16' />
+                  </div>
+                  <Skeleton className='h-20 w-full mb-6' />
+                  <div className='flex gap-4'>
+                    <Skeleton className='h-10 w-28' />
+                    <Skeleton className='h-10 w-28' />
+                  </div>
+                </div>
+                <Skeleton className='h-64 md:h-80 rounded-lg' />
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    );
+  }
 
   if (!project) {
     notFound();
@@ -128,7 +190,11 @@ export default async function ProjectPage({ params }: any) {
             <h2 className='text-2xl md:text-3xl font-bold mb-8'>
               Implementation Details
             </h2>
-            <Tabs defaultValue='overview' className='w-full'>
+            <Tabs
+              key={`tabs-${project.slug}`}
+              defaultValue='overview'
+              className='w-full'
+            >
               <TabsList className='grid w-full grid-cols-2 md:grid-cols-5 mb-8'>
                 <TabsTrigger value='overview'>Overview</TabsTrigger>
                 {project.screenshots.map((screenshot, index) => (
@@ -216,45 +282,34 @@ export default async function ProjectPage({ params }: any) {
           <div className='container'>
             <h2 className='text-2xl font-bold mb-8'>More Projects</h2>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-              {/* This would ideally filter out the current project and show others */}
-              {[1, 2, 3]
-                .filter((id) => id !== project.id)
-                .map((id) => {
-                  const relatedProject = getProjectBySlug(
-                    id === 1
-                      ? "e-commerce-platform"
-                      : id === 2
-                      ? "portfolio-website"
-                      : "task-management-app"
-                  );
-                  if (!relatedProject) return null;
-
-                  return (
-                    <Card key={id} className='overflow-hidden'>
-                      <div className='relative h-40'>
-                        <Image
-                          src={relatedProject.image || "/placeholder.svg"}
-                          alt={relatedProject.title}
-                          fill
-                          className='object-cover'
-                        />
-                      </div>
-                      <CardContent className='p-6'>
-                        <h3 className='text-xl font-bold mb-2'>
-                          {relatedProject.title}
-                        </h3>
-                        <p className='text-muted-foreground mb-4'>
-                          {relatedProject.summary}
-                        </p>
-                        <Button asChild>
-                          <Link href={`/projects/${relatedProject.slug}`}>
-                            View Project
-                          </Link>
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  );
-                })}
+              {projects
+                .filter((p) => p.id !== project.id)
+                .slice(0, 3)
+                .map((relatedProject) => (
+                  <Card key={relatedProject.id} className='overflow-hidden'>
+                    <div className='relative h-40'>
+                      <Image
+                        src={relatedProject.image || "/placeholder.svg"}
+                        alt={relatedProject.title}
+                        fill
+                        className='object-cover'
+                      />
+                    </div>
+                    <CardContent className='p-6'>
+                      <h3 className='text-xl font-bold mb-2'>
+                        {relatedProject.title}
+                      </h3>
+                      <p className='text-muted-foreground mb-4'>
+                        {relatedProject.summary}
+                      </p>
+                      <Button asChild>
+                        <Link href={`/projects/${relatedProject.slug}`}>
+                          View Project
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
             </div>
           </div>
         </section>

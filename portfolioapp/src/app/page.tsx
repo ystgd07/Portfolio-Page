@@ -92,12 +92,7 @@ export default function Home() {
             >
               프로젝트
             </Link>
-            <Link
-              href='#skills'
-              className='text-muted-foreground hover:text-foreground transition-colors'
-            >
-              기술
-            </Link>
+
           </nav>
         </div>
       </header>
