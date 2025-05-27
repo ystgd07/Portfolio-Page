@@ -7,8 +7,8 @@ import BackToTopButton from "@/components/BackToTopButton";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "25's 성수 포트폴리오",
-  description: "25's 성수 포트폴리오",
+  title: "양성수 | 프론트엔드 포트폴리오",
+  description: "양성수 | 프론트엔드 포트폴리오",
   icons: {
     icon: "/logo.png",
   },
